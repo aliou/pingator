@@ -1,0 +1,13 @@
+{
+  "name": "Pingator",
+  "description": "Ping your Heroku apps so they don't go to sleep",
+  "repository": "http://github.com/aliou/pingator",
+  "keywords": [
+    "heroku",
+    "ping"
+  ],
+  "addons": [
+    "redistogo:nano",
+    "scheduler:standard"
+  ]
+}
