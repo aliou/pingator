@@ -12,7 +12,7 @@ module Pingator
     end
 
     def add!(url)
-      Pingator.redis.sadd 'urls', url
+      Pingator.redis.sadd 'urls', url if uri?(url)
     end
 
     def remove!(url)
@@ -21,6 +21,16 @@ module Pingator
 
     def list
       Pingator.redis.smembers 'urls'
+    end
+
+    private
+    def uri?(url)
+      uri = URI.parse(url)
+      %w( http https ).include?(uri.scheme)
+    rescue URI::BadURIError
+      false
+    rescue URI::InvalidURIError
+      false
     end
   end
 end
