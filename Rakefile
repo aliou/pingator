@@ -28,3 +28,5 @@ namespace :bot do
     puts bot.list
   end
 end
+
+task :default => ['bot:ping']
